@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title></title>
     <style type="text/css">
-        #dv {
+        #dv2 {
             width: 400px;
             height: 600px;
             position: relative;
@@ -17,7 +17,7 @@
            height:50px;
            font-size:20px;
        }
-        a {
+        #A {
             border:1px solid black;
             width:50px;
             height:30px;
@@ -34,14 +34,42 @@
             var btn = document.getElementById("btn");
             btn.style.marginLeft = (window.innerWidth / 2 - 25) + "px";
             btn.onclick = function () {
-                var dv = document.getElementById("dv");
+                var dv1 = document.getElementById("dv1");
+                dv1.style.position = "absolute";
+                dv1.style.display = "block";
+                dv1.style.left = "0px";
+                dv1.style.right = "0px";
+                dv1.style.top = "0px";
+                dv1.style.bottom = "0px";
+                dv1.style.backgroundColor = "#ccc";
+                dv1.style.opacity = "0.5";//设置透明度火狐不能用
+                dv1.style.filter = "alpha(Opacity=50)";//设置透明度IE不能用
+                //document.getElementsByTagName("body")[0].appendChild(dv);
+
+                var dv = document.getElementById("dv2");
                 dv.style.display = "block";
+                dv.style.position = "absolute";
+                //dv.style.opacity = "1";//设置透明度火狐不能用
+                //dv.style.filter = "alpha(Opacity=100)";//设置透明度IE不能用
                 dv.style["background-color"] = "aliceblue";
-                document.getElementsByTagName("body")[0].style.backgroundColor = "darkgrey";
+                //document.getElementsByTagName("body")[0].style.backgroundColor = "darkgrey";
 
                 var form = document.getElementById("form");
                 form = btn1 ? btn1 : c("form");
                 dv.appendChild(form);
+
+                var a = document.getElementById("a");
+                a = a ? a : c("a");
+                a.id = "a";
+                //a.href = "#";
+                a.innerHTML = "X";
+                a.style.color = "blue";
+                a.style.cursor = "pointer";
+                a.style.position = "absolute";
+                a.style.top = "0px";
+                a.style.right = "0px";
+                a.style.fontSize = "20px";
+                dv.appendChild(a);
 
                 //账号
                 var lblZH = document.getElementById("lblZH");
@@ -113,9 +141,13 @@
                 btn2.style.height = "50px";
                 btn2.style.fontSize = "20px";
                 dv.appendChild(btn2);
-                btn2.onclick = function () {
-                    document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+
+                a.onclick = btn2.onclick = function () {
+                    //document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+                    txt1.value = "";
+                    txt2.value = "";
                     dv.style.display = "none";
+                    dv1.style.display = "none";
                 };
                 //提交方式1
                 //btn1.onclick = function () {
@@ -144,9 +176,10 @@
 <body>
     <br /><br /><br />
     <input type="button" id="btn" value="登录" />
-    <a class="s-btn btn-cancel" hidefocus="" href="#" onclick="return false;">取消</a>
-    <div id="dv">
-
+    <a class="s-btn btn-cancel" hidefocus="" href="#" onclick="return false;" id="A">取消</a>
+    <div id="dv1">
+        
     </div>
+    <div id="dv2"></div>
 </body>
 </html>
