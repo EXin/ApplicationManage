@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*var appendLoad = function (func) {
+            var oldFunc = window.onload;
+            if (typeof (oldFunc) == "function") {
+                window.onload = function () {
+                    oldFunc();
+                    func();
+                };
+                    
+            } else {
+                window.onload = func;
+            }
+        };
+
+        appendLoad(function () {
+            alert("第一个方法!");
+        });
+        appendLoad(function () {
+            alert("第二个方法!");
+        });                 
+        appendLoad(function () {
+            alert("第三个方法!");
+        });*/
+        var eventHelper = (function () {
+            var kv = {};
+            return {
+                add: function (name, func) {
+                    kv[name] = func;
+                    window.onload = function () {
+                        for (var k in kv) {
+                            kv[k]();
+                        }
+                    };
+                },
+                remove: function (name) {
+                    for (var k in kv) {
+                        if (name == k) {
+                            delete kv[k];
+                            return;
+                        }
+                    }
+                }
+            }
+        })();
+        eventHelper.add("f1",function() {
+            alert("第一个方法!");
+        });
+        eventHelper.add("f2", function () {
+            alert("第二个方法!");
+        });
+        eventHelper.remove("f1");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

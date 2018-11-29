@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #dv{
+            text-align:center;
+        }
+        #image{
+            margin: 0 auto;
+        }
+    </style>
+    <script type="text/javascript">
+        onload = function () {
+            var image = document.getElementById("image");
+            setInterval(function () {
+                var time = new Date().toLocaleString();
+                document.getElementById("p").innerHTML = time;
+                var hour = new Date().getHours().toString();
+                hour = (hour < 10 ? "0" : "") + hour;
+                var minute = new Date().getMinutes().toString();
+                minute = (minute < 10 ? "0" : "") + minute;
+                var second = new Date().getSeconds().toString();
+                second = (second < 10 ? "0" : "") + second;
+                image.setAttribute("src", ("Sources/mm_全/" + hour + "_" + minute + ".jpg"));
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <p id="p"></p>
+    <img id="image"/>
+</body>
+</html>

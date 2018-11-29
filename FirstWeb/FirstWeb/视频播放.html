@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		h1{
+			text-align:center;
+		}
+		/*table{
+			margin: 0 auto;
+		}
+		a{
+			cursor:pointer;
+			background-color:pink;
+		}*/
+		div{
+			width:1000px;
+			height:1200px;
+			margin: 0 auto;
+		}
+	</style>
+	<script type="text/javascript">
+		var dva = null; 
+		var c = function(id){
+			return document.createElement(id);
+		};
+		var get = function(id){
+			return document.getElementById(id);
+		};
+		var gets = function(id){
+			return document.getElementsByTagName(id);
+		};
+		function init(num,sum){
+				var table = c("table");
+				table.style.margin = "0 auto";
+				var dv = get("dv");
+				gets("body")[0].insertBefore(table,dv);
+				var tr = new Array();
+				for(var i = 1; i <= num; i++)
+				{
+					tr[i] = c("tr");
+					table.appendChild(tr[i]);
+					tr[i].id = "tr"+i;
+					tmp = sum-12*(i-1);
+					var td = new Array();
+					for(var j = 1; j <= (tmp>12?12:tmp); j++)
+					{
+						td[j] = c("td");
+						a = c("a");
+						a.innerHTML = "第"+((i-1)*12+j)+"集";
+						a.title = (i-1)*12+j;
+						a.style.backgroundColor = "darkgrey";
+						a.style.cursor = "pointer";
+                        td[j].appendChild(a);
+                        tr[i].appendChild(td[j]);
+                        td[j].firstChild.onclick = function () {
+                            //在web的应用程序中无法访问服务器根目录的上级目录,所以此目录无法使用,若不建立web服务器单独本地使用则可以使用
+                            //在web的应用程序中无法使用绝对目录
+                            document.getElementById("video").src = "../../DownLoad/video/Re：creators/Re" + this.title + ".mp4";
+							if(dva!=null){//当dav不为null，说明已经有点击过播放按钮，需要把点击过的变回原来的颜色
+								dva.style.backgroundColor = "darkgrey";
+							}
+							this.style.backgroundColor = "pink";
+							dva=this;
+						};
+					}
+				}
+			}
+			
+		onload = function(){
+			var num = 2;//表格行的数量
+			var sum = 22;//视频的级数
+			document.getElementById("video").setAttribute("Autoplay", "1");//立即播放
+			document.getElementById("video").setAttribute("Controls", "1");//出现控制栏
+			document.getElementById("video").setAttribute("LOOP", "1");//循环播放
+			document.getElementById("video").setAttribute("preload", "1");//缓冲
+			//document.getElementById("video").src = "";
+			init(num,sum);
+			//var td = document.getElementById("tr").getElementsByTagName("td");
+				/*for(var i = 0; i < td.length; i++)//不要用i,应为i永远为跳出循环的值，onclick的对象无法访问，只能用this
+				{
+					td[i].firstChild.setAttribute("title",(i+1));
+					td[i].firstChild.onclick = function(){
+						document.getElementById("video").src = "E:/DownLoad/video/Re：creators/Re"+this.title+".mp4";
+					};
+				}
+				var td2 = document.getElementById("tr2").getElementsByTagName("td");
+				for(var i = 0; i < td2.length; i++)
+				{
+					td2[i].firstChild.setAttribute("title",(td.length+1+i));
+					td2[i].firstChild.onclick = function(){
+						document.getElementById("video").src = "E:/DownLoad/video/Re：creators/Re"+this.title+".mp4";
+					};
+				}*/
+		};
+	</script>
+</head>
+<body>
+	<h1>Re：creators</h1>
+	<!--
+	<table id="tb">
+		<tr id="tr">
+			<td><a >第一集</a></td>
+			<td><a >第二集</a></td>
+			<td><a >第三集</a></td>
+			<td><a >第四集</a></td>
+			<td><a >第五集</a></td>
+			<td><a >第六集</a></td>
+			<td><a >第七集</a></td>
+			<td><a >第八集</a></td>
+			<td><a >第九集</a></td>
+			<td><a >第十集</a></td>
+			<td><a >第十一集</a></td>
+			<td><a >第十二集</a></td>
+			
+		</tr>
+		<tr id="tr2">
+		<td><a >第十三集</a></td>
+			<td><a >第十四集</a></td>
+			<td><a >第十五集</a></td>
+			<td><a >第十六集</a></td>
+			<td><a >第十七集</a></td>
+			<td><a >第十八集</a></td>
+			<td><a >第十九集</a></td>
+			<td><a >第二十集</a></td>
+			<td><a >第二十一集</a></td>
+			<td><a >第二十二集</a></td>
+		</tr>
+	</table>
+	-->
+	<div id="dv">
+		<video id="video" height="800" width="1000" >您的浏览器不支持video标签</video>
+	</div>
+</body>
+</html>

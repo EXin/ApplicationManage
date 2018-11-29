@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        var J = function (selector) {
+            //标记#id
+            //var m = /#(.+)/.exec(selector)[1];
+            var m = null;
+            try {
+                m = /#(.+)/.exec(selector)[1];
+            }
+            catch(e){}
+            if (m != null) {
+                var node = document.getElementById(m);
+                o[o.length++] = node;
+                return o;
+            } else {
+                var nodes = document.getElementsByTagName(selector);
+                for (var i = 0; i < nodes.length; i++) {
+                    o[o.length++] = nodes[i];
+                }
+                //o.length--;//从零开始算，为了让#id也能用，必须减回去
+                return o;
+            }
+            //var m = /#(.+)/.exec(selector);//?为什么
+            //if (m) {
+            //    // 匹配上了，有#，就是id
+            //    // 如果匹配不上，那么m就是null因此m[1]是有问题的
+            //    var node = document.getElementById(m[1]);
+            //    o[0] = node;
+            //    return o;
+            //} else {
+            //    var nodes = document.getElementsByTagName(selector);
+            //    for (var i = 0; i < nodes.length; i++) {
+            //        o[o.length++] = nodes[i];
+            //    }
+            //    return o;
+            //}
+        };
+        /*var o = {};
+        var css=function (styles) {
+            for (va
+            r k in styles) {
+                this[0].style[k] = styles[k];
+            }
+        }
+        o.css = css;*/
+        var o = {
+
+            length:0,
+            css: function (styles) {
+                for (var k in styles) {
+                    //this[0].style[k] = styles[k];
+                    for (var i = 0; i < this.length; i++) {
+                        this[i].style[k] = styles[k];
+                    }
+                }
+            }
+        };
+        onload = function () {
+            J("#dv").css({
+                border: "1px solid red",
+                width: "200px",
+                height:"100px"
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="dv"></div><br />
+    <div></div><br />
+    <div></div><br />
+    <div></div><br />
+    <div></div><br />
+</body>
+</html>

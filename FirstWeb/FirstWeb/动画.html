@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #dv{
+            width:300px;
+            height:500px;
+            border:1px solid red;
+            overflow:hidden;
+        }
+        #dv2{
+            width:100px;
+            height:100px;
+            background-color:pink;
+            position:absolute;
+            left:0px;
+            top:600px;
+        }
+    </style>
+    <script type="text/javascript">
+        onload = function () {
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                var dv = document.getElementById("dv");
+                var h = dv.offsetHeight;
+                var intervalId = setInterval(function () {
+                    h--;
+                    if (h <= 0) {
+                        clearInterval(intervalId);
+                        dv.style.display = "none";
+                    }
+                    dv.style.height = h + "px";
+                }, 20);
+            };
+
+            //移动div框
+            document.getElementById("btn2").onclick = function () {
+                var dv2 = document.getElementById("dv2");
+                var interval2 = setInterval(function () {
+                    var CurrentX = parseInt(dv2.style.left || dv2.offsetLeft);
+                    var deltaX = Math.ceil((1200 - CurrentX) / 10);//向上取整
+                    var finalX = deltaX + CurrentX;
+
+                    var CurrentY = parseInt(dv2.style.top || dv2.offsetTop);
+                    var deltaY = Math.ceil((CurrentY - 150) / 10);
+                    var finalY = CurrentY - deltaY;
+
+                    if (finalX >= 1200) {
+                        finalX = 1200;
+                    }
+                    if (finalY <= 150) {
+                        finalY = 150;
+                    }
+                    if (finalX >= 1200 && finalY <= 150) {
+                        clearInterval(interval2);
+                    }
+                    dv2.style.top = finalY + "px";
+                    dv2.style.left = finalX + "px";
+                }, 50);
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="点击掩藏" id="btn" /><br /><br />
+    <input type="button" name="name" value="点击开始动画" id="btn2" /><br /><br />
+    <div id="dv">
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+    </div>
+    <div id="dv2"></div>
+</body>
+</html>

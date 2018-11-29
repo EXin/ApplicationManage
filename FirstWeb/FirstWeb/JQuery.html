@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        var o = {
+            css: function (styles) {
+                for (var k in styles) {
+                    this[0].style[k] = styles[k];
+                }
+            }
+        };
+        var J = function (id) {
+            var node = document.getElementById(id);
+            o[0] = node;
+            return o;
+        };
+        onload = function () {
+            J("dv").css({
+                border: "1px solid red",
+                width: "200px",
+                height:"100px"
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="dv"></div>
+</body>
+</html>

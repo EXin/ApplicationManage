@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #p{
+            text-align:center;
+        }
+        #dv {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        onload = function () {
+            var direction = true;//向右
+            setInterval(function () {
+                var p = document.getElementById("p");
+                var txt = p.innerHTML;
+                if (direction) {
+                    var body = txt.charAt(0);//第一个字符
+                    var str = txt.substr(1);//从一开始到最后
+                    p.innerHTML = str + body;
+                } else {
+                    var body = txt.charAt(txt.length - 1);
+                    var str = txt.substr(0, txt.length - 1);
+                    p.innerHTML = body + str;
+                }
+            }, 200);
+            document.getElementById("right").onclick = function () {
+                direction = true;
+            };
+            document.getElementById("left").onclick = function () {
+                direction = false;
+            };
+        };
+    </script>
+</head>
+<body>
+    <p id="p">JavaScript的substr()方法怎么应用 </p><br />
+    <form action="/" method="post" id="form">
+        <div id="dv">
+            <input type="button" name="name" value="<-" id="left" />
+            <input type="button" name="name" value="->" id="right" />
+        </div>
+    </form>
+</body>
+</html>

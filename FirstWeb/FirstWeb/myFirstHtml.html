@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css"></style>
+    <script type="text/javascript">
+        /*onbeforeunload = function () {
+            window.alert("名侦探柯南");
+        };*/
+        window.onload = function () {
+            document.getElementById("btn").onclick = function () {
+                //history.forward();
+                history.go(1);
+            };
+            window.document.getElementById("aaa").onclick = function () {
+                return false;
+            };
+        };
+    </script>
+    <!--
+    <script src="scripts/script.js"></script>
+    <link href="styles/style.css" rel="stylesheet" />
+        onclick,ondblclick,onkeydown,onkeyup,onkeypress,onmousedown,onmouseup,onmousemove,onmouseover,onmouseout
+     -->
+</head>
+<body class="bd">
+    <a href="表单.html">表单.html</a><br />
+    <input type="button" name="name" value="->" id="btn" /><br />
+    <ul class="main">
+        <li>
+            <a href="./Sources/08.jpg" id="aaa">
+                <img src="Sources/small_08.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="./Sources/09.jpg">
+                <img src="Sources/small_09.jpg" />
+            </a>
+        </li>
+    </ul>
+    <div id="clear"></div>
+    <div id="dv"></div>
+</body>
+</html>

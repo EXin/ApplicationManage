@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        var json = {
+            "lt": "<",
+            "gt": ">"
+        };
+        String.prototype.codeHtml = function () {
+            //this表示当前字符串
+            return this.replace(/&(.+?);/g, function (a, b) {
+                return json[b];
+            });
+        };
+        onload = function () {
+            document.getElementById("btn").onclick = function () {
+                var pre = document.getElementById("code");
+                var txt = pre.innerHTML;
+                clipboardData.setData("text", txt.codeHtml());
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn">点击复制</button>
+    <pre id="code">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>

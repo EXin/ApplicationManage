@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        onload = function () {
+            alert(Number(false));
+            var isRun = true;
+
+            var sp = document.getElementById("date");
+            sp.innerHTML = new Date().toLocaleString();
+            var intervalId = setInterval(function () {
+                if (isRun) {
+                    sp.innerHTML = new Date().toLocaleString();
+                }
+            }, 1000);
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                //if (arguments[0].button != 0) return;
+                /*if (this.value == "点击停止") {
+                    this.value = "点击开始";
+                    //clearInterval(intervalId);
+                    isRun = !isRun;
+                } else {
+                    this.value = "点击停止";
+                    sp.innerHTML = new Date().toLocaleString();
+                    //intervalId = setInterval(function () {
+                    //    sp.innerHTML = new Date().toLocaleString();
+                    //}, 1000);
+                    isRun = !isRun;
+                }*/
+                isRun = !isRun;
+                this.value = "点击" + "开始,停止".split(',')[Number(isRun)];
+            };
+        };
+    </script>
+
+</head>
+<body>
+    <p id="p">现在时刻：<span id="date"></span></p><br />
+    <input type="button" value="点击停止" id="btn"/>
+</body>
+</html>

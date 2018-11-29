@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #txt1,#txt2{
+            width:90%;
+        }
+    </style>
+    <script type="text/javascript">
+        onload = function () {
+            var time;
+            var txt1 = document.getElementById("txt1");
+            var txt2 = document.getElementById("txt2");
+            txt2.onkeyup = function () {
+                clearTimeout(time);//没有延时器就不执行??
+                time = setTimeout(function () {
+                    txt1.value = txt2.value;
+                }, 500);
+            };
+        };
+
+    </script>
+</head>
+<body>
+    <input type="text" name="name" value="" id="txt1" /><br /><br /><br />
+    <input type="text" name="name" value="" id="txt2" />
+</body>
+</html>

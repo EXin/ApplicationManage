@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #dv {
+            width: 400px;
+            height: 600px;
+            position: relative;
+            left: 42%;
+            top: 200px;
+        }
+       #btn{
+           vertical-align:middle;
+           width:100px;
+           height:50px;
+           font-size:20px;
+       }
+        a {
+            border:1px solid black;
+            width:50px;
+            height:30px;
+            margin-left:20px;
+            padding:10px 20px;
+            display: inline-block;
+        }
+    </style>
+    <script type="text/javascript">
+        var c = function (id) {
+            return document.createElement(id);
+        };
+        onload = function () {
+            var btn = document.getElementById("btn");
+            btn.style.marginLeft = (window.innerWidth / 2 - 25) + "px";
+            btn.onclick = function () {
+                var dv = document.getElementById("dv");
+                dv.style.display = "block";
+                dv.style["background-color"] = "aliceblue";
+                document.getElementsByTagName("body")[0].style.backgroundColor = "darkgrey";
+
+                var form = document.getElementById("form");
+                form = btn1 ? btn1 : c("form");
+                dv.appendChild(form);
+
+                //账号
+                var lblZH = document.getElementById("lblZH");
+                lblZH = lblZH ? lblZH : c("label");
+                lblZH.id = "lblZH";
+                lblZH.innerHTML = "账号";
+                lblZH.style.position = "absolute";
+                lblZH.style.top = "155px";
+                lblZH.style.left = "50px";
+                lblZH.style.fontSize = "20px";
+                dv.appendChild(lblZH);
+
+                var txt1 = document.getElementById("txt1");
+                txt1 = txt1 ? txt1 : c("input");
+                txt1.id = "txt1";
+                txt1.style.position = "absolute";
+                txt1.style.top = "150px";
+                txt1.style.left = "100px";
+                txt1.style.width = "200px";
+                txt1.style.height = "30px";
+                txt1.style.fontSize = "20px";
+                txt1.type = "text";
+                txt1.name = "uid";
+                form.appendChild(txt1);
+                //密码
+                var lblMM = document.getElementById("lblMM");
+                lblMM = lblMM ? lblMM : c("label");
+                lblMM.id = "lblMM";
+                lblMM.innerHTML = "密码";
+                lblMM.style.position = "absolute";
+                lblMM.style.top = "210px";
+                lblMM.style.left = "50px";
+                lblMM.style.fontSize = "20px";
+                form.appendChild(lblMM);
+
+                var txt2 = document.getElementById("txt2");
+                txt2 = txt2 ? txt2 : c("input");
+                txt2.id = "txt2";
+                txt2.style.position = "absolute";
+                txt2.style.top = "200px";
+                txt2.style.left = "100px";
+                txt2.style.height = "30px";
+                txt2.style.width = "200px";
+                txt2.style.fontSize = "20px";
+                txt2.type = "text";
+                txt2.name = "pwd";
+                form.appendChild(txt2);
+
+                var btn1 = document.getElementById("btn1");
+                btn1 = btn1 ? btn1 : c("button");
+                btn1.id = "btn1";
+                btn1.innerHTML = "登录";
+                btn1.style.position = "absolute";
+                btn1.style.bottom = "120px";
+                btn1.style.left = "80px";
+                btn1.style.width = "100px";
+                btn1.style.height = "50px";
+                btn1.style.fontSize = "20px";
+                form.appendChild(btn1);
+
+                var btn2 = document.getElementById("btn2");
+                btn2 = btn2 ? btn2 : c("button");
+                btn2.id = "btn2";
+                btn2.innerHTML = "取消";
+                btn2.style.position = "absolute";
+                btn2.style.bottom = "120px";
+                btn2.style.right = "80px";
+                btn2.style.width = "100px";
+                btn2.style.height = "50px";
+                btn2.style.fontSize = "20px";
+                dv.appendChild(btn2);
+                btn2.onclick = function () {
+                    document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+                    dv.style.display = "none";
+                };
+                //提交方式1
+                //btn1.onclick = function () {
+                //    if (confirm("确定登录吗？")) {
+                //        alert("登录成功");
+                //        var f = document.forms[0];
+                //        f.submit();
+                //    }
+                //    else {
+                //        return false;
+                //    }
+                //};
+                //提交方式2
+                btn1.onclick = function () {
+                    var f = document.forms[0];
+                    f.onsubmit = function () {
+                        return confirm("确定登录吗？");
+                    };
+                };
+            };
+
+            
+        };
+    </script>
+</head>
+<body>
+    <br /><br /><br />
+    <input type="button" id="btn" value="登录" />
+    <a class="s-btn btn-cancel" hidefocus="" href="#" onclick="return false;">取消</a>
+    <div id="dv">
+
+    </div>
+</body>
+</html>

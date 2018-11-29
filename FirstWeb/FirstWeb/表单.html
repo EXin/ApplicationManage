@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #dv{
+            width:400px;
+            height:300px;
+            margin:10px auto;
+            border:1px solid red;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var mit = document.getElementById("mit");
+            document.getElementById("btn").onclick = function () {
+                //history.back();
+                history.go(-1);
+            };
+            /*document.onmousemove = function (e) {
+                //将坐标显示在浏览器的title上
+                //this.title = e.screenX + "," + e.screenY;//鼠标移在浏览器在window窗口的位置
+                //this.title = e.clientX + "," + e.screenY;//鼠标在浏览器的位置
+            };*/
+            document.getElementById("dv").onmousemove = function (e) {
+                document.title = (e.layerX - this.offsetLeft) + "," + (e.layerY - this.offsetTop);
+            };
+            mit.onclick = function () {
+                var res = window.confirm("是否要提交?");
+                if (res == false) {
+                    alert("屏幕分辨率为" + screen.width + "X" + screen.height);
+                    return false;
+                }
+                else {
+                    alert("提交成功");
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" name="b" value="<-" id="btn" /><br />
+    <form >
+        <input type="text" name="uid" value="" /><br /><br />
+        <input type="submit" name="name" id="mit" />
+    </form>
+    <br />
+    <div id="dv"></div>
+</body>
+</html>

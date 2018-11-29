@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        #dv {
+            width: 1000px;
+            text-align: center;
+            /*border:1px solid red;*/
+            margin: 0 auto;
+        }
+        #year4, #day2,#minute2{
+            margin-right: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        var get = function (id) {
+            return document.getElementById(id);
+        };
+        onload = function () {
+            var datetime = new Date().toLocaleString();
+            get("year1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(1) + ".png"));
+            get("year2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(2) + ".png"));
+            get("year3").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(3) + ".png"));
+            get("year4").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(4) + ".png"));
+            get("month1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(8) + ".png"));
+            get("month2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(9) + ".png"));
+            get("day1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(13) + ".png"));
+            get("day2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(14) + ".png"));
+            get("hour1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(20) + ".png"));
+            get("hour2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(21) + ".png"));
+            get("minute1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(25) + ".png"));
+            get("minute2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(26) + ".png"));
+            get("second1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(30) + ".png"));
+            get("second2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(31) + ".png"));
+            setInterval(function () {
+                datetime = new Date().toLocaleString();
+                get("second2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(31) + ".png"));
+                if (parseInt(datetime.charAt(31)) == 0) {
+                    get("second1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(30) + ".png"));
+                    if (parseInt(datetime.charAt(30)) == 0) {
+                        get("minute2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(26) + ".png"));
+                        if (parseInt(datetime.charAt(26)) == 0) {
+                            get("minute1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(25) + ".png"));
+                            if (parseInt(datetime.charAt(25)) == 0) {
+                                get("hour2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(21) + ".png"));
+                                if (parseInt(datetime.charAt(21)) == 0) {
+                                    get("hour1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(20) + ".png"));
+                                    if (parseInt(datetime.charAt(20)) == 0) {
+                                        get("day2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(14) + ".png"));
+                                        if (parseInt(datetime.charAt(14)) == 0) {
+                                            get("day1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(13) + ".png"));
+                                            if (parseInt(datetime.charAt(13)) == 0) {
+                                                get("month2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(9) + ".png"));
+                                                if (parseInt(datetime.charAt(9)) == 0) {
+                                                    get("month1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(8) + ".png"));
+                                                    if (parseInt(datetime.charAt(8)) == 0) {
+                                                        get("year4").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(4) + ".png"));
+                                                        if (parseInt(datetime.charAt(4)) == 0) {
+                                                            get("year3").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(3) + ".png"));
+                                                            if (parseInt(datetime.charAt(3)) == 0) {
+                                                                get("year2").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(2) + ".png"));
+                                                                if (parseInt(datetime.charAt(2)) == 0) {
+                                                                    get("year1").setAttribute("src", ("Sources/time/countdown-" + datetime.charAt(1) + ".png"));
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <div id="dv">
+        <img id="year1" />
+        <img id="year2" />
+        <img id="year3" />
+        <img id="year4" />
+        <img id="month1" />
+        <img id="month2" />
+        <img id="day1" />
+        <img id="day2" />
+        <img id="hour1" />
+        <img id="hour2" />
+        <img id="minute1" />
+        <img id="minute2" />
+        <img id="second1" />
+        <img id="second2" />
+    </div>
+</body>
+</html>

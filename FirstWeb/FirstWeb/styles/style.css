@@ -1,0 +1,15 @@
+﻿#dv {
+
+}
+#clear{
+    clear:both;
+}
+.main li{
+    list-style-type:none;
+    float:left;
+    margin-right:20px;
+}
+.bd ul{
+    width:300px;
+    margin:0 auto;
+}
