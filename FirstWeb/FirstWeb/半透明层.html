@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        onload = function () {
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                var dv = document.createElement("div");
+                dv.style.position = "absolute";
+                dv.style.left = "0px";
+                dv.style.right = "0px";
+                dv.style.top = "0px";
+                dv.style.bottom = "0px";
+                dv.style.backgroundColor = "#ccc";
+                dv.style.opacity = "0.5";//设置透明度火狐不能用
+                dv.style.filter = "alpha(Opacity=50)";//设置透明度IE不能用
+                document.getElementsByTagName("body")[0].appendChild(dv);
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" value="登录" />
+    <p>111111111111111</p>
+    <p>111111111111111</p>
+    <p>111111111111111</p>
+    <p>111111111111111</p>
+    <p>111111111111111</p>
+</body>
+</html>
