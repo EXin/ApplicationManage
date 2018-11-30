@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        var foo = function () {
+            alert(this);
+        };
+        var o = {
+            toString: function () {
+                return "我是o对象";
+            }
+        };
+        o.foo = foo;
+        o.foo();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

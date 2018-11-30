@@ -35,7 +35,7 @@
             var btn = document.getElementById("btn");
             btn.style.marginLeft = (window.innerWidth / 2 - 25) + "px";
             btn.onclick = function () {
-                var dv1 = document.getElementById("dv1");
+                var dv1 = document.getElementById("dv1");//覆盖整个浏览器，使登录界面出现后原来的界面的按钮就不能用
                 dv1.style.position = "absolute";
                 dv1.style.display = "block";
                 dv1.style.left = "0px";
@@ -47,19 +47,18 @@
                 dv1.style.filter = "alpha(Opacity=50)";//设置透明度IE不能用
                 //document.getElementsByTagName("body")[0].appendChild(dv);
 
-                var dv = document.getElementById("dv2");
-                dv.style.display = "block";
-                dv.style.position = "absolute";
-                //dv.style.opacity = "1";//设置透明度火狐不能用
-                //dv.style.filter = "alpha(Opacity=100)";//设置透明度IE不能用
-                dv.style["background-color"] = "aliceblue";
-                dv.style.left = "42%";
-                dv.style.top = "200px";
+                var dv2 = document.getElementById("dv2");//登录层
+                dv2.style.display = "block";
+                dv2.style.position = "absolute";
+                dv2.style["background-color"] = "aliceblue";
+                dv2.style.left = "42%";
+                dv2.style.top = "200px";
                 //document.getElementsByTagName("body")[0].style.backgroundColor = "darkgrey";
 
                 var form = document.getElementById("form");
-                form = btn1 ? btn1 : c("form");
-                dv.appendChild(form);
+                form = btn1 ? btn1 : c("form");//存在就读取，不存在就创建
+                form.id = "form";
+                dv2.appendChild(form);
 
                 var a = document.getElementById("a");
                 a = a ? a : c("a");
@@ -72,7 +71,7 @@
                 a.style.top = "0px";
                 a.style.right = "0px";
                 a.style.fontSize = "20px";
-                dv.appendChild(a);
+                dv2.appendChild(a);
 				
 				var dv3 = document.getElementById("dv3");
                 dv3 = dv3?dv3:c("div");
@@ -84,9 +83,10 @@
                 dv3.style.right = "20px";
                 dv3.style.height = "30px";
                 dv3.style.backgroundColor = "red";
-                dv.appendChild(dv3);
-				var sp = document.getElementById("sp");
-                sp = sp?sp:c("span");
+                dv2.appendChild(dv3);
+                var sp = document.getElementById("sp");
+                sp = sp ? sp : c("span");
+                sp.id = "sp";
 				sp.innerHTML = "在红条处按下鼠标移动";
 				dv3.appendChild(sp);
                 dv3.style.textAlign = "center";
@@ -94,15 +94,15 @@
                 var flag = false;
                 dv3.onmousedown = function (e) {//鼠标按下时红条时触发
                     flag = true;
-                    var i = e.clientX - dv.offsetLeft;//dv.offsetLeft是dv离浏览器的距离,e.clientX是鼠标距离浏览器左边的距离
-                    var j = e.clientY - dv.offsetTop;
+                    var i = e.clientX - dv2.offsetLeft;//dv.offsetLeft是dv离浏览器的距离,e.clientX是鼠标距离浏览器左边的距离
+                    var j = e.clientY - dv2.offsetTop;
                     document.onmousemove = function (e1) {//在移动时对象是整个浏览器
 
                         if (flag == true) {
                             var x = e1.clientX - (i);//dv距离浏览器左半边的距离,移动时按这个距离相加减,而不是鼠标距离左半边的距离
                             var y = e1.clientY - (j);
-                            dv.style.top = y + "px";
-                            dv.style.left = x + "px";
+                            dv2.style.top = y + "px";
+                            dv2.style.left = x + "px";
                         }
                     };
                     //alert(e.clientX + "," + e.clientY);
@@ -121,7 +121,7 @@
                 lblZH.style.top = "155px";
                 lblZH.style.left = "50px";
                 lblZH.style.fontSize = "20px";
-                dv.appendChild(lblZH);
+                dv2.appendChild(lblZH);
 
                 var txt1 = document.getElementById("txt1");
                 txt1 = txt1 ? txt1 : c("input");
@@ -181,13 +181,13 @@
                 btn2.style.width = "100px";
                 btn2.style.height = "50px";
                 btn2.style.fontSize = "20px";
-                dv.appendChild(btn2);
+                dv2.appendChild(btn2);
 
                 a.onclick = btn2.onclick = function () {
                     //document.getElementsByTagName("body")[0].style.backgroundColor = "white";
                     txt1.value = "";
                     txt2.value = "";
-                    dv.style.display = "none";
+                    dv2.style.display = "none";
                     dv1.style.display = "none";
                 };
                 //提交方式1
