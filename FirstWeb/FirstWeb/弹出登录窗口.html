@@ -16,6 +16,7 @@
            width:100px;
            height:50px;
            font-size:20px;
+           
        }
         #A {
             border:1px solid black;
@@ -52,6 +53,8 @@
                 //dv.style.opacity = "1";//设置透明度火狐不能用
                 //dv.style.filter = "alpha(Opacity=100)";//设置透明度IE不能用
                 dv.style["background-color"] = "aliceblue";
+                dv.style.left = "42%";
+                dv.style.top = "200px";
                 //document.getElementsByTagName("body")[0].style.backgroundColor = "darkgrey";
 
                 var form = document.getElementById("form");
@@ -70,7 +73,45 @@
                 a.style.right = "0px";
                 a.style.fontSize = "20px";
                 dv.appendChild(a);
+				
+				var dv3 = document.getElementById("dv3");
+                dv3 = dv3?dv3:c("div");
+				dv3.id = "dv3";
+                dv3.style.cursor = "pointer";
+                dv3.style.position = "absolute";
+                dv3.style.left = "0px";
+                dv3.style.top = "0px";
+                dv3.style.right = "20px";
+                dv3.style.height = "30px";
+                dv3.style.backgroundColor = "red";
+                dv.appendChild(dv3);
+				var sp = document.getElementById("sp");
+                sp = sp?sp:c("span");
+				sp.innerHTML = "在红条处按下鼠标移动";
+				dv3.appendChild(sp);
+                dv3.style.textAlign = "center";
+                dv3.style.lineHeight = "30px";
+                var flag = false;
+                dv3.onmousedown = function (e) {//鼠标按下时红条时触发
+                    flag = true;
+                    var i = e.clientX - dv.offsetLeft;//dv.offsetLeft是dv离浏览器的距离,e.clientX是鼠标距离浏览器左边的距离
+                    var j = e.clientY - dv.offsetTop;
+                    document.onmousemove = function (e1) {//在移动时对象是整个浏览器
 
+                        if (flag == true) {
+                            var x = e1.clientX - (i);//dv距离浏览器左半边的距离,移动时按这个距离相加减,而不是鼠标距离左半边的距离
+                            var y = e1.clientY - (j);
+                            dv.style.top = y + "px";
+                            dv.style.left = x + "px";
+                        }
+                    };
+                    //alert(e.clientX + "," + e.clientY);
+                    //alert(dv.offsetLeft + "," + dv.offsetTop);
+                };
+                dv3.onmouseup = function () {//松开时停止移动
+                    flag = false;
+                };
+				
                 //账号
                 var lblZH = document.getElementById("lblZH");
                 lblZH = lblZH ? lblZH : c("label");
