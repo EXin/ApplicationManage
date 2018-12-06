@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*var foo = function () {
+            alert(this);
+        };
+        var o = {
+            toString: function () {
+                return "我是o对象";
+            }
+        };
+        o.foo = foo;
+        o.foo();*/
+        //函数的返回值是一个对象类型,那么就忽略之前创建出来的对象(忽略之前构造函数之前赋的值),返回这个对象类型
+        //函数的返回值不是对象,就忽略返回值，直接返回this,之前赋值(创建的对象this)有效
+        /*var Person = function () {
+            this.name = "赵晓虎";
+            this.age = 20;
+            return 1234;
+        };
+        var p = new Person();
+        alert(p.name);*/
+
+        //上下文调用模式
+        //语法
+        //函数.apply(对象,[参数列表]);
+        //第二种调用方式
+        //函数.call(对象,参数列表);
+        //对象为null时时函数调用模式,就为对象时是方法调用模式
+        var fool = function (a, b) {
+            alert(this);
+            return a > b ? a : b;
+        };
+        //var num = fool.apply(null, [12, 34]);
+        //var num = fool.apply({}, [12, 34]);
+        //var num = fool.call({}, 12, 34);
+        alert(num);
+
+       /* //反射调用
+        class CC {
+            public void Func(int num) {
+
+            }
+        }
+        Type t = typeof (CC);
+        MethodInfo m = t.GetMethod("Func");
+        object instance = Activator.CreateInstance(t);
+        m.Invoke(instance, new object[]{ 98});*/
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

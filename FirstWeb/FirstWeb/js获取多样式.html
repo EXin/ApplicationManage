@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*onload = function () {
+            var o = { length: 0 };
+            var J = function (selector) {
+                var m = /#(.+)/.exec(selector);
+                if (m) {
+                    var node = document.getElementById(m[1]);
+                    o[o.length++] = node;
+                } else {
+                    var nodes = document.getElementsByTagName(selector);
+                    for (var i = 0; i < nodes.length; i++) {
+                        o[o.length++] = nodes[i];
+                    }
+                }
+                return o;
+            };
+            o.css = function (styles) {
+                for (var k in styles) {
+                    for (var i = 0; i < o.length; i++) {
+                        this[i].style[k] = styles[k];
+                    }
+                }
+            };
+            J("div").css({
+                border: "1px solid red",
+                width: "100px",
+                height: "100px"
+            });
+        }*/
+
+        //用继承来写
+        (function (w) {
+            var J = function (selector) {
+                return new J.fn.ini(selector);
+            };
+            J.fn = J.prototype = {
+                constructor: J,
+                length: 0,
+                ini: function (selector) {
+                    if (typeof selector === "function") {
+                        var oldFunc = window.onload;
+                        if (typeof oldFunc === "function") {
+                            window.onload = function () {
+                                oldFunc();
+                                selector();
+                            }
+                        } else {
+                            window.onload = selector;
+                        }
+                        return this;
+                    }
+                    var m = /#(.+)/.exec(selector);
+                    if (m) {
+                        var node = document.getElementById(m[1]);
+                        this[this.length++] = node;
+                    } else {
+                        var nodes = document.getElementsByTagName(selector);
+                        for (var i = 0; i < nodes.length; i++) {
+                            this[this.length++] = nodes[i];
+                        }
+                    }
+                    return this;
+                },
+                css: function (styles) {
+                    for (var k in styles) {
+                        for (var i = 0; i < this.length; i++) {
+                            this[i].style[k] = styles[k];
+                        }
+                    }
+                    return this;
+                },
+                addEvent: function (eventName,func) {
+                    for (var i = 0; i < this.length; i++) {
+                        this[i][eventName] = func;
+                    }
+                    return this;
+                }
+            };
+            w.J = J;
+        })(window);
+        J.fn.ini.prototype = J.fn;
+        J(function () {
+            J("div").css({
+                border: "1px solid red",
+                width: "100px",
+                height:"100px"
+            }).addEvent("onclick", function () {
+                alert(this.innerHTML);
+            })
+        });
+    </script>
+</head>
+<body>
+    <div id="dv">1111</div>
+    <div>2222</div>
+    <div>3333</div>
+    <div>4444</div>
+    <div>5555</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        var o = { name: "我是祖宗" };
+        var f1 = function () {
+            this.name = "我是亚当";
+        };
+        f1.prototype = o;
+        var foo1 = new f1();
+        var f2 = function () {
+            //this.name = "我是夏娃";
+        };
+        var foo2 = new f2();
+        f2.prototype = foo1;
+        var f3 = function () {
+            //this.name = "我是人类";
+        };
+        f3.prototype = foo2;
+        var foo3 = new f3();
+        alert(foo3.name);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
